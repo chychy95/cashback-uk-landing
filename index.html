@@ -21,6 +21,13 @@ p{margin:0 0 12px;color:var(--m);line-height:1.5}
 .hs-custom-heading p{margin:3px 0;color:var(--m);font-size:.9rem}
 .hubspot-form-shell{width:100%}
 .hubspot-form-shell iframe{width:100%!important;max-width:100%!important;min-height:420px!important;border:0!important}
+/* Hide HubSpot's default form title and description inside the form. Without
+   this the embedded form injects its own h2 and rich text which can show up
+   underneath our custom heading on mobile. */
+#hs-shell .hs-form__title,
+#hs-shell .hs-richtext {
+  display:none !important;
+}
 .fallback{display:none;margin-top:12px;padding:12px;border-radius:12px;border:1px dashed rgba(148,163,184,.45);background:rgba(2,6,23,.55)}
 .fallback strong{color:#e5e7eb}
 @media (min-width:900px){.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:start}}
@@ -66,13 +73,20 @@ p{margin:0 0 12px;color:var(--m);line-height:1.5}
                   target: "#hs-shell",
                   onFormReady: function($form) {
                     // Remove the default HubSpot heading and description so that
-                    // only our custom heading shows on the page
-                    var h2 = $form.querySelector('h2');
-                    if (h2) h2.remove();
-                    // The first paragraph inside the form usually contains the
-                    // default description text; remove it as well
-                    var p = $form.querySelector('p');
-                    if (p) p.remove();
+                    // only our custom heading shows on the page. Use jQuery if available,
+                    // otherwise fall back to querySelector on the DOM element.
+                    if (window.jQuery && typeof window.jQuery === 'function') {
+                      var $ = window.jQuery;
+                      // Remove all heading elements inside the form
+                      $form.find('h1, h2, h3, h4, h5, h6').remove();
+                      // Remove the first paragraph (HubSpot description)
+                      $form.find('p').first().remove();
+                    } else {
+                      var h2 = $form.querySelector('h2');
+                      if (h2) h2.remove();
+                      var p = $form.querySelector('p');
+                      if (p) p.remove();
+                    }
                   }
                 });
               }
