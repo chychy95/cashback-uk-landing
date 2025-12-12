@@ -48,8 +48,37 @@ p{margin:0 0 12px;color:var(--m);line-height:1.5}
         </div>
 
         <div class="hubspot-form-shell" id="hs-shell">
-          <script src="https://js-eu1.hsforms.net/forms/embed/146643050.js" async></script>
-          <div class="hs-form-frame" data-region="eu1" data-form-id="9f4189cd-29f9-41bf-a4ca-7563343277eb" data-portal-id="146643050"></div>
+          <!--
+            We load the HubSpot forms v2 library and then instantiate the form via
+            the `hbspt.forms.create` API. Doing it this way lets us strip out
+            HubSpot’s default title/description from inside the embedded form so
+            there isn’t a duplicate faded heading on mobile. The onload callback
+            ensures the library has finished loading before we call create().
+          -->
+          <script>
+            function createHubspotForm() {
+              // Guard against the library not being available yet
+              if (window.hbspt && window.hbspt.forms && window.hbspt.forms.create) {
+                window.hbspt.forms.create({
+                  region: "eu1",
+                  portalId: "146643050",
+                  formId: "9f4189cd-29f9-41bf-a4ca-7563343277eb",
+                  target: "#hs-shell",
+                  onFormReady: function($form) {
+                    // Remove the default HubSpot heading and description so that
+                    // only our custom heading shows on the page
+                    var h2 = $form.querySelector('h2');
+                    if (h2) h2.remove();
+                    // The first paragraph inside the form usually contains the
+                    // default description text; remove it as well
+                    var p = $form.querySelector('p');
+                    if (p) p.remove();
+                  }
+                });
+              }
+            }
+          </script>
+          <script src="https://js-eu1.hsforms.net/forms/v2.js" defer onload="createHubspotForm()"></script>
         </div>
 
         <div class="fallback" id="hs-fallback">
