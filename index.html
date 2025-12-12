@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CashBack UK – Earn Cashback on Everyday Shopping</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CashBack UK helps UK shoppers earn cashback on everyday purchases. Sign up in a few taps and start saving.">
+<style>
+:root{--bg:#020617;--card:#0f172a;--card2:#0d1b2a;--t:#fff;--m:#9ca3af;--g:#22c55e}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top,#0f172a 0,#020617 60%,#000 100%);color:var(--t)}
+.shell{max-width:1120px;margin:auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);border:1px solid rgba(148,163,184,.35);border-radius:18px;padding:22px;box-shadow:0 18px 45px rgba(0,0,0,.45);margin:14px 0}
+h1,h2,h3{margin:0 0 10px}
+p{margin:0 0 12px;color:var(--m);line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:13px 18px;border-radius:999px;background:linear-gradient(135deg,var(--g),#16a34a);color:#071014;text-decoration:none;font-weight:800;letter-spacing:.2px;box-shadow:0 18px 45px rgba(22,163,74,.35);transition:transform .2s ease,filter .2s ease}
+.btn:active{transform:translateY(1px);filter:brightness(.98)}
+.small{font-size:.9rem}
+.form-wrap{background:radial-gradient(circle at top,rgba(56,189,248,.12),transparent 55%),var(--card2);border:1px solid rgba(148,163,184,.35);border-radius:14px;padding:16px}
+.hs-custom-heading h3{font-size:1rem;margin:0 0 6px;color:#e5e7eb}
+.hs-custom-heading p{margin:3px 0;color:var(--m);font-size:.9rem}
+.hubspot-form-shell{width:100%}
+.hubspot-form-shell iframe{width:100%!important;max-width:100%!important;min-height:420px!important;border:0!important}
+.fallback{display:none;margin-top:12px;padding:12px;border-radius:12px;border:1px dashed rgba(148,163,184,.45);background:rgba(2,6,23,.55)}
+.fallback strong{color:#e5e7eb}
+@media (min-width:900px){.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:start}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="grid">
+    <section class="card">
+      <h1>Earn Cashback on Everyday UK Shopping</h1>
+      <p>Join CashBack UK and get money back on groceries, fashion, travel &amp; more.</p>
+      <a class="btn" href="https://noklnk.com/x/6026051?subid1=&subid2=&subid3=&subid4=&subid5=&subid7=&subid8=&subid9=&subid10=&subid11=&subid12=&subid13=&subid14=&subid15=&subid16=&creative_id=&creative_name=&source_id=&google_aid=&ios_ifa=" rel="noopener noreferrer">Sign Up &amp; Start Earning ➜</a>
+      <p class="small" style="margin-top:10px">No email required. You can sign up instantly via the button above.</p>
+    </section>
+
+    <section class="card">
+      <h2>Optional Bonus Email Tips</h2>
+      <p>Get reminders &amp; bonus savings ideas (email optional).</p>
+
+      <div class="form-wrap">
+        <div class="hs-custom-heading">
+          <h3>Sign Up for Our Newsletter</h3>
+          <p>Stay updated with the latest news, updates, and special offers.</p>
+          <p>Join our community by signing up for our newsletter today!</p>
+        </div>
+
+        <div class="hubspot-form-shell" id="hs-shell">
+          <script src="https://js-eu1.hsforms.net/forms/embed/146643050.js" async></script>
+          <div class="hs-form-frame" data-region="eu1" data-form-id="9f4189cd-29f9-41bf-a4ca-7563343277eb" data-portal-id="146643050"></div>
+        </div>
+
+        <div class="fallback" id="hs-fallback">
+          <strong>Email form not showing?</strong>
+          <p style="margin:6px 0 0">
+            If you’re previewing this file from your phone’s Files/Downloads app, it may block external scripts (like HubSpot),
+            so the form won’t load. Upload this HTML to any website hosting (or open it in Safari from an <em>https</em> URL)
+            and the form will appear.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+(function(){
+  var t=0,max=5000,step=250;
+  function check(){
+    t+=step;
+    var shell=document.getElementById('hs-shell');
+    var hasIframe=shell&&shell.querySelector('iframe');
+    if(hasIframe){return;}
+    if(t>=max){
+      var fb=document.getElementById('hs-fallback');
+      if(fb) fb.style.display='block';
+      return;
+    }
+    setTimeout(check,step);
+  }
+  setTimeout(check,step);
+})();
+</script>
+</body>
+</html>
